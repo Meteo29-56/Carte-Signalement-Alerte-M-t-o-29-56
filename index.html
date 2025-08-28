@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carte Signalement/Alerte Météo 29-56</title>
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <!-- Leaflet Fullscreen -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-fullscreen@2.4.0/dist/leaflet.fullscreen.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Carte Signalement/Alerte Météo 29-56</h1>
+      <div class="header-buttons">
+        <button id="toggle-dark-mode"><i class="fas fa-moon"></i></button>
+        <button id="show-tutorial"><i class="fas fa-question-circle"></i> Aide</button>
+        <button id="show-stats"><i class="fas fa-chart-bar"></i> Stats</button>
+      </div>
+    </header>
+    <div id="map"></div>
+    <div class="controls">
+      <div class="filter-controls">
+        <h3>Filtres <i class="fas fa-filter"></i></h3>
+        <div class="filter-options">
+          <label><input type="checkbox" name="filter" value="Route coupée" checked> Route coupée</label>
+          <label><input type="checkbox" name="filter" value="Inondation" checked> Inondation</label>
+          <label><input type="checkbox" name="filter" value="Vent violent" checked> Vent violent</label>
+          <label><input type="checkbox" name="filter" value="Neige/verglas" checked> Neige/verglas</label>
+          <label><input type="checkbox" name="filter" value="Orage" checked> Orage</label>
+          <label><input type="checkbox" name="filter" value="Coupure d'électricité" checked> Coupure d'électricité</label>
+          <label><input type="checkbox" name="filter" value="Grêle" checked> Grêle</label>
+          <label><input type="checkbox" name="filter" value="Tornade/Tuba/Trombe marine" checked> Tornade/Tuba</label>
+          <label><input type="checkbox" name="filter" value="Chute d'arbre" checked> Chute d'arbre</label>
+          <label><input type="checkbox" name="filter" value="Incendie" checked> Incendie</label>
+          <div class="urgency-filters">
+            <h4>Urgence</h4>
+            <label><input type="checkbox" name="urgency" value="faible" checked> Faible</label>
+            <label><input type="checkbox" name="urgency" value="moyenne" checked> Moyenne</label>
+            <label><input type="checkbox" name="urgency" value="élevée" checked> Élevée</label>
+          </div>
+        </div>
+      </div>
+      <div class="form-container">
+        <h3>Signaler un événement <i class="fas fa-exclamation-triangle"></i></h3>
+        <form id="signalement-form">
+          <select name="type" required>
+            <option value="">Type de signalement</option>
+            <option value="Route coupée">Route coupée</option>
+            <option value="Inondation">Inondation</option>
+            <option value="Vent violent">Vent violent</option>
+            <option value="Neige/verglas">Neige/verglas</option>
+            <option value="Orage">Orage</option>
+            <option value="Coupure d'électricité">Coupure d'électricité</option>
+            <option value="Grêle">Grêle</option>
+            <option value="Tornade/Tuba/Trombe marine">Tornade/Tuba</option>
+            <option value="Chute d'arbre">Chute d'arbre</option>
+            <option value="Incendie">Incendie</option>
+          </select>
+          <select name="urgency" required>
+            <option value="">Niveau d'urgence</option>
+            <option value="faible">Faible</option>
+            <option value="moyenne">Moyenne</option>
+            <option value="élevée">Élevée</option>
+          </select>
+          <textarea name="description" placeholder="Décrivez la situation (lieu précis, danger, etc.)" required></textarea>
+          <input type="file" name="photo" accept="image/*" capture="camera">
+          <button type="submit">Envoyer <i class="fas fa-paper-plane"></i></button>
+        </form>
+      </div>
+    </div>
+    <div class="social-share">
+      <button id="share-facebook"><i class="fab fa-facebook"></i> Partager</button>
+      <button id="share-twitter"><i class="fab fa-twitter"></i> Tweeter</button>
+    </div>
+  </div>
+  <div id="tutorial-modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Comment utiliser la carte ?</h2>
+      <p>1. Utilisez les filtres pour afficher/masquer les types de signalements.</p>
+      <p>2. Cliquez sur un marqueur pour voir les détails.</p>
+      <p>3. Signalez un événement via le formulaire (avec photo si possible).</p>
+      <p>4. Partagez les alertes importantes sur les réseaux sociaux.</p>
+    </div>
+  </div>
+  <div id="stats-modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Statistiques des signalements</h2>
+      <div id="stats-content">
+        <p>Aucun signalement pour le moment.</p>
+      </div>
+    </div>
+  </div>
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/leaflet-fullscreen@2.4.0/dist/Leaflet.fullscreen.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
