@@ -245,4 +245,3 @@ document.getElementById('toggle-dark-mode').addEventListener('click', () => {
 // Expose les fonctions de partage au scope global
 window.shareOnFacebook = shareOnFacebook;
 window.shareOnTwitter = shareOnTwitter;
-
