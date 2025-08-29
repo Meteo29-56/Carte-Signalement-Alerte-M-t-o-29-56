@@ -241,25 +241,8 @@ document.getElementById('toggle-dark-mode').addEventListener('click', () => {
   document.body.classList.toggle('dark-mode');
 });
 
-// Exemple : Ajouter un signalement de test
-addSignalementToMap({
-  type: "Orage",
-  urgency: "élevée",
-  description: "Orage violent en cours, éclairs fréquents.",
-  lat: 47.8,
-  lng: -3.8,
-  date: new Date().toISOString()
-});
-
-addSignalementToMap({
-  type: "Coupure d'électricité",
-  urgency: "moyenne",
-  description: "Coupure secteur dans le centre-ville.",
-  lat: 48.2,
-  lng: -3.2,
-  date: new Date().toISOString()
-});
 
 // Expose les fonctions de partage au scope global
 window.shareOnFacebook = shareOnFacebook;
 window.shareOnTwitter = shareOnTwitter;
+
